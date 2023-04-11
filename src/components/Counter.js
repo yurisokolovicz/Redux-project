@@ -12,6 +12,10 @@ const Counter = () => {
         dispatch({ type: 'increment' }); // increment is the action type from src/store/index.js
     };
 
+    const increaseHandler = () => {
+        dispatch({ type: 'increase', amount: 10 });
+    };
+
     const decrementHandler = () => {
         dispatch({ type: 'decrement' }); // decrement is the action type from src/store/index.js
     };
@@ -24,6 +28,7 @@ const Counter = () => {
             <div className={styles.value}>{counter}</div>
             <div>
                 <button onClick={decrementHandler}>Decrement </button>
+                <button onClick={increaseHandler}>Increment by 10 </button>
                 <button onClick={incrementHandler}>Increment </button>
             </div>
             <button onClick={toggleCounterHandler}>Toggle Counter</button>

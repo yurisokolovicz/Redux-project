@@ -7,6 +7,7 @@ const Counter = () => {
 
     // When we use useSelector react-redux will automatically subscribe to the Redux store and will re-run the function we pass to useSelector whenever the store state changes. This means that we don't need to manually subscribe to the store and we don't need to manually re-run the function we pass to useSelector whenever the store state changes. This is all handled by react-redux for us.
     const counter = useSelector(state => state.counter);
+    const show = useSelector(state => state.showCounter);
 
     const incrementHandler = () => {
         dispatch({ type: 'increment' }); // increment is the action type from src/store/index.js
@@ -20,12 +21,14 @@ const Counter = () => {
         dispatch({ type: 'decrement' }); // decrement is the action type from src/store/index.js
     };
 
-    const toggleCounterHandler = () => {};
+    const toggleCounterHandler = () => {
+        dispatch({ type: 'toggle' }); // toggle is the action type from src/store/index.js
+    };
 
     return (
         <main className={styles.counter}>
             <h1>Redux Counter</h1>
-            <div className={styles.value}>{counter}</div>
+            {show && <div className={styles.value}>{counter}</div>}
             <div>
                 <button onClick={decrementHandler}>Decrement </button>
                 <button onClick={increaseHandler}>Increment by 10 </button>

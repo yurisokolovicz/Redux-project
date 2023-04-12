@@ -14,7 +14,7 @@ const counterSlice = createSlice({
             state.counter--;
         },
         increase(state, action) {
-            state.counter = state.counter + action.amount;
+            state.counter = state.counter + action.payload;
         },
         toggleCounter(state) {
             state.showCounter = !state.showCounter;
@@ -25,5 +25,7 @@ const counterSlice = createSlice({
 const store = configureStore({
     reducer: counterSlice.reducer
 });
+// CounterActions is an object that contains all the action creators for the counter slice. It includes the increment, decrement, increase, and toggleCounter action creators.
+export const counterActions = counterSlice.actions;
 
 export default store;
